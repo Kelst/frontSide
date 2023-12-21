@@ -10,6 +10,8 @@ import useStore from '../../store/store';
 import useInfoStore from '../../store/infoStore';
 import AddService from '../../components/dialog/AddService';
 import StopPlayDialog from '../../components/dialog/StopPlayDialog';
+import GlasmorphizmButtonMob from '../../components/button/glasmorphizm/GlasmorphizmButtonMob';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 function daysAndHoursUntilEndOfMonth() {
   let currentDate = new Date();
 
@@ -63,8 +65,7 @@ const [openDialogMac,setOpenDialogMac]=useState(false)
 const [openDialogCredit,setOpenDialogCredit]=useState(false)
 const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
-const [label,setLabel]=useState("")
-const [title,setTitle]=useState("")
+
 
 const setLoader=useInfoStore(state=>state.setLoader) 
 const showAllert=useInfoStore(state=>state.showAllert) 
@@ -106,7 +107,7 @@ function handleStaticIp(){
   return (
       <section >
 
-    <div className=' hidden lg:block'>
+    <div className=' hidden lg:block relative z-10'>
     <div className=" text-white  flex items-center justify-center rounded-lg">
       <div className="container mx-auto p-8 bg-white text-black rounded-md shadow-md">
         <div className="mb-8 text-center">
@@ -193,6 +194,8 @@ function handleStaticIp(){
           <p className="text-md mb-2 text-white ">Адреса: <span className='font-bold text-[12px]'>{user.adress}</span> </p>
           <p className="text-md mb-2 text-white  flex justify-start items-center gap-x-2">Стан з'єднання: <span className='font-bold text-[12px]'>{user.statusInternet?<div className='relative'><OnlinePredictionIcon fontSize='large' className='text-grean-500 text-white  '></OnlinePredictionIcon><span className=' absolute text-[10px] top-[1px] '>Online</span></div>:<div className=' relative'><OnlinePredictionIcon fontSize='large' className=' text-orange-500 animate-pulse'/> <span className=' absolute text-[10px] top-[1px] '>Offline</span></div>} </span> </p>
           <p className="text-md mb-2 text-white ">Стан рахунку: <span className='font-bold text-[12px]'>{user.balance} грн.</span> </p>
+          <GlasmorphizmButtonMob label='Призупинити логін' handleAction={handleStopPlayLogin}/>
+
         </div>
       </div>
       <div className=" w-[220px] sm:w-[420px]  mx-auto   shadow-zinc-900  shadow-lg  z-0 mt-2 sm:uppercase">
@@ -221,8 +224,31 @@ function handleStaticIp(){
           <p className="text-md mb-2 text-white ">Отримано: <span className='font-bold text-[12px]'>{user.sendData}</span> </p>
      </div>
         
+        
         </div>
+       
       </div>
+      <div className=" w-[220px]  sm:w-[420px] mx-auto   shadow-zinc-900  shadow-lg  z-0 mt-2">
+
+<div className={style.animationBorder}>
+<div className=" text-lg font-semibold mb-2   text-gray-200 relative  p-[5px] rounded-md  sm:uppercase">
+          <SettingsOutlinedIcon className='absolute top-[-25px] z-[100]  left-[0%] w-[300px]  border-t-2 rounded-2xl  mb-6'/>
+          {/* <RotateLeftOutlinedIcon className=' cursor-pointer absolute top-[-16px] z-[100]  right-[0px] w-[300px]  border-t-2 rounded-2xl border-b-2   mb-6'/> */}
+
+          </div>
+<h2 className="text-xl font-bold mb-4 text-red-500">Керування логіном</h2>
+
+   <div className=' grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 justify-center items-center ' >
+   <GlasmorphizmButtonMob  handleAction={handleClearMac} label='Очистити MAC'/>
+   <GlasmorphizmButtonMob handleAction={handleSetCredit} label='Встановити кредит'  />
+   <GlasmorphizmButtonMob label='Додаткові послуги' handleAction={handleAddService} />
+   <GlasmorphizmButtonMob label='Статична IP'/>
+
+   
+  
+</div>
+</div>
+</div>
     </div>
     </div>
 
