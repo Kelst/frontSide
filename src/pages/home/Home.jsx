@@ -88,6 +88,7 @@ function handleSetCredit(){
   // setTimeout(()=>{
   //   setLoader()
   // },2000)
+  setOpenDialogCredit(true)
    showAllert(2,"Кредит на 5 днів встановлено")
 }
 function handleAddService(){
@@ -162,15 +163,15 @@ function handleStaticIp(){
              
             <p className="text-gray-300 mb-2">IP: {user.ip}</p>
             <p className="text-gray-300 mb-2">Тривалість : {user.duration}</p>
-            <p className="text-gray-300 mb-2">Send Data: {user.sendData}</p>
-            <p className="text-gray-300 mb-2">Get Data: {user.getData}</p>
+            <p className="text-gray-300 mb-2">Відправлено: {user.sendData}</p>
+            <p className="text-gray-300 mb-2">Отримано: {user.getData}</p>
           </div>
         </div>
         <div className={"mt-8 bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
           <h2 className="text-xl font-bold mb-4 text-red-500">Керування логіном</h2>
            <div className=' flex  justify-center' >
            <GlasmorphizmButton handleAction={handleClearMac} label='Очистити MAC'/>
-           <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'/>
+           <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'  />
            <GlasmorphizmButton label='Додаткові послуги' handleAction={handleAddService} />
            <GlasmorphizmButton label='Статична IP'/>
 
@@ -225,8 +226,7 @@ function handleStaticIp(){
     </div>
     </div>
 
-    <MacCreditDialog open={openDialogCredit} label={label} title={title} handleClose={()=>{setOpenDialogCredit(false)}}   />
-    <MacCreditDialog open={openDialogMac} label={label} title={title} handleClose={()=>{setOpenDialogMac(false)}}   />
+    <MacCreditDialog open={openDialogCredit} handleAction={showAllert} handleClose={()=>{setOpenDialogCredit(false)}}   />
      <AddService open={openDialogService} handleClose={()=>setOpenDialogService(false)}/>
      <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} />
       </section>

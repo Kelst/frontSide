@@ -9,7 +9,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function MacCreditDialog({open,handleClose,label,title}) {
+export default function MacCreditDialog({open,handleClose,handleAction}) {
   return (
     <React.Fragment>
      
@@ -20,12 +20,22 @@ export default function MacCreditDialog({open,handleClose,label,title}) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"32px"}}>{title}</DialogTitle>
+        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"32px"}}>Встановити кредит</DialogTitle>
         <DialogContent>
-            {label}
+        <div className="max-w-2xl mx-auto p-8">
+      <h2 className="text-3xl font-bold mb-4">Додаткові 5 днів Інтернету</h2>
+      <p className="text-gray-700 mb-6">
+        Одноразово продовжте свій Інтернет на цілих 5 днів за місяць, щоб завжди бути зв'язаними, коли це найбільше потрібно.
+      </p>
+
+      <h2 className="text-3xl font-bold mb-4">Одна унікальна можливість щомісяця</h2>
+      <p className="text-gray-700 mb-6">
+        Ця можливість доступна вам тільки один раз за календарний місяць, роблячи її винятковою та цінною.
+      </p>
+    </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}sx={{color:'black'}}>OK</Button>
+          <Button onClick={handleClose}sx={{color:'black'}}>Продовжити послугу</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
