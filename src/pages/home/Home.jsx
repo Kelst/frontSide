@@ -6,32 +6,16 @@ import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import CompassCalibrationOutlinedIcon from '@mui/icons-material/CompassCalibrationOutlined';
 import GlasmorphizmButton from '../../components/button/glasmorphizm/GlasmorphizmButton';
 import MacCreditDialog from '../../components/dialog/MacCreditDialog';
+
 import useStore from '../../store/store';
+
 import useInfoStore from '../../store/infoStore';
 import AddService from '../../components/dialog/AddService';
 import StopPlayDialog from '../../components/dialog/StopPlayDialog';
 import GlasmorphizmButtonMob from '../../components/button/glasmorphizm/GlasmorphizmButtonMob';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-function daysAndHoursUntilEndOfMonth() {
-  let currentDate = new Date();
-
-  let lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-  let timeDifference = lastDayOfMonth - currentDate;
-  let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  return {
-    days: days,
-    hours: hours
-  };
-}
-function extractInfoFromString(inputString) {
-  const matchSpread = inputString.match(/(\d+)\(/);
-  const spead = matchSpread ? matchSpread[1] : null;
-  const matchPrice = inputString.match(/\(([^)]+)\)/);
-  const price = matchPrice ? matchPrice[1] : null;
-
-  return { spead, price };
-}
+import { daysAndHoursUntilEndOfMonth, extractInfoFromString } from '../../tools/tools';
+ 
 
 const user={
   name:"Безкоровайний Владислав Андрійович",
@@ -61,7 +45,6 @@ const user={
 
  }
 export default function Home() {
-const [openDialogMac,setOpenDialogMac]=useState(false)
 const [openDialogCredit,setOpenDialogCredit]=useState(false)
 const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
@@ -69,7 +52,7 @@ const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
 
 const setLoader=useInfoStore(state=>state.setLoader) 
 const showAllert=useInfoStore(state=>state.showAllert) 
-//controller
+
 
 function handleStopPlayLogin(){
  
@@ -77,18 +60,12 @@ function handleStopPlayLogin(){
 
 }
 function handleClearMac(){
-  // setLoader()
-  // setTimeout(()=>{
-  //   setLoader()
-  // },2000)
+
    showAllert(2,"Mac очищено")
 
 }
 function handleSetCredit(){
-  // setLoader()
-  // setTimeout(()=>{
-  //   setLoader()
-  // },2000)
+
   setOpenDialogCredit(true)
    showAllert(2,"Кредит на 5 днів встановлено")
 }
@@ -109,7 +86,7 @@ function handleStaticIp(){
 
     <div className=' hidden lg:block relative z-10'>
     <div className=" text-white  flex items-center justify-center rounded-lg">
-      <div className="container mx-auto p-8 bg-white text-black rounded-md shadow-md">
+      <div className="container mx-auto p-8 bg-white   opacity-95 text-black rounded-md shadow-md">
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold mb-2 text-red-500">{user.name}</h1>
           <p className="text-gray-600">Логін: {user.login}</p>
@@ -152,7 +129,6 @@ function handleStaticIp(){
 </div>
 </div>
 
-          
           </div>
           </div>
 
@@ -161,7 +137,6 @@ function handleStaticIp(){
             <p className="text-gray-300 mb-2">Тарифний план: {user.tariff}</p>
             <p className="text-gray-300 mb-2">Швидкість: {extractInfoFromString(user.tariff).spead}Mбіт</p>
             <p className="text-gray-300 mb-2">Ціна: {extractInfoFromString(user.tariff).price} грн.</p>
-             
             <p className="text-gray-300 mb-2">IP: {user.ip}</p>
             <p className="text-gray-300 mb-2">Тривалість : {user.duration}</p>
             <p className="text-gray-300 mb-2">Відправлено: {user.sendData}</p>
@@ -175,7 +150,6 @@ function handleStaticIp(){
            <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'  />
            <GlasmorphizmButton label='Додаткові послуги' handleAction={handleAddService} />
            <GlasmorphizmButton label='Статична IP'/>
-
            </div>
           
         </div>
@@ -203,7 +177,21 @@ function handleStaticIp(){
           <div className="text-lg font-semibold mb-2  text-gray-200 relative  p-[5px] rounded-md">Інформація про тариф <PaidOutlinedIcon className='absolute top-[-25px] z-[100] border-t-2 rounded-2xl left-[0%]'/></div>
           <p className="text-md mb-2 text-gray-200">Тариф:  <span className=' font-bold  text-h text-[12px]'>{user.tariff}</span></p>
           <p className="text-md mb-2 text-white ">Абонплата: <span className='font-bold text-[12px]'>{user.monthlyPayment} грн/міс</span> </p>
-          <p className="text-md mb-2 text-white ">Наступне зняття через: <span className='font-bold text-[12px]'>{`${daysAndHoursUntilEndOfMonth().days} днів ${daysAndHoursUntilEndOfMonth().days} годин` } </span> </p>
+          <p className="text-md mb-2 text-white ">Наступне зняття через: </p>
+          <div className="grid grid-flow-col  gap-x-5 text-center auto-cols-max">
+  <div className={"flex flex-col p-1 bg-neutral rounded-box text-neutral-content text-white  text-md"+" "+style.animationBorderSM}>
+    <span className="countdown  text-md justify-center items-center">
+      <span style={{"--value":daysAndHoursUntilEndOfMonth().days}}>{daysAndHoursUntilEndOfMonth().days}</span>
+    </span>
+    days
+  </div> 
+  <div className={"flex flex-col justify-center items-center p-1 bg-neutral rounded-box text-neutral-content text-white text-md"+" "+style.animationBorderSM}>
+    <span className="countdown  text-md ">
+      <span  style={{"--value":daysAndHoursUntilEndOfMonth().hours}}>{daysAndHoursUntilEndOfMonth().hours}</span>
+    </span>
+    hours
+  </div> 
+</div>
 
         
         </div>
@@ -233,7 +221,6 @@ function handleStaticIp(){
 <div className={style.animationBorder}>
 <div className=" text-lg font-semibold mb-2   text-gray-200 relative  p-[5px] rounded-md  sm:uppercase">
           <SettingsOutlinedIcon className='absolute top-[-25px] z-[100]  left-[0%] w-[300px]  border-t-2 rounded-2xl  mb-6'/>
-          {/* <RotateLeftOutlinedIcon className=' cursor-pointer absolute top-[-16px] z-[100]  right-[0px] w-[300px]  border-t-2 rounded-2xl border-b-2   mb-6'/> */}
 
           </div>
 <h2 className="text-xl font-bold mb-4 text-red-500">Керування логіном</h2>

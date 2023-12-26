@@ -10,22 +10,39 @@ import CustomAlert from '../../components/alert/CustomAlert'
 import {  useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import { useLocation } from 'react-router-dom';
+import useInfoStore from '../../store/infoStore'
 
 export default function Layout() {
   const [init, setInit] = useState(false);
+  let location = useLocation();
+  const setActiveItem=useInfoStore(state=>state.setActiveItem)
+
+  React.useEffect(() => {
+    switch (location.pathname){
+      case "/":
+        setActiveItem("Item1")
+        break;
+        case "/payment":
+          setActiveItem("Item2")
+          break;
+          case "/info":
+            setActiveItem("Item3")
+            break;
+            case "/news":
+              setActiveItem("Item4")
+              break;
+
+    }
+  
+  }, [location]);
 
 
   const checkUser= useStore(store=>store.checkUser)
   const navigate=useNavigate()
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
       setInit(true);
     });
@@ -45,7 +62,7 @@ export default function Layout() {
       interactivity: {
         events: {
           onClick: {
-            enable: true,
+            enable: false,
             mode: "push",
           },
           onHover: {
@@ -124,17 +141,18 @@ useEffect(()=>{
     <div className='pt-0 '>
            <Loader/>
            <CustomAlert/>
-           <Particles
+      { init && <Particles
         id="tsparticleshexagon"
         className="ua-particles"
         url="hexagonPath.json"
         particlesLoaded={particlesLoaded}
         options={options}
-      />
+      />}
     <div className='flex  gap-x-28 md:gap-x-0   '>
     <div className=' flex-shrink '>
-     <Navigation  /> 
+    <Navigation  /> 
     <NavigationBig  />
+
     </div>
     <div className={`w-[360px] m-auto mt-[150px]   h-screen  mr-auto md:w-[896px]  sm:mr-auto md:mr-auto  xl:w-[1450px] xl:mr-auto  flex flex-col justify-start   items-center ${style.bigBg} `}>
     <Outlet/>

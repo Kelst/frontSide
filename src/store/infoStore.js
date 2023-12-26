@@ -6,7 +6,10 @@ openLoader:false,
 openAlert:false,
 typeAlert:2,
 messageAlert:"",
-
+activeItem:"Item1",
+setActiveItem(item){
+set(state=>({...state,activeItem:item}))
+},
   setLoader(){
     set(state=>({...state,openLoader:!state.openLoader}))
   },

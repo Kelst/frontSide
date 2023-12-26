@@ -11,11 +11,13 @@ import KeyboardTabOutlinedIcon from '@mui/icons-material/KeyboardTabOutlined';
 import IconMenuGridO from "../icons/IconMenuGrid0";
 import Loader from "../loader/Loader";
 import ExitDialog from "../dialog/ExitDialog";
+import useInfoStore from "../../store/infoStore";
 
 export default function Navigation() {
-
+  
     const [active,setActive]=useState(false)
-    const [activeItem, setActiveItem] = useState('Item1');
+    const activeItem=useInfoStore(state=>state.activeItem)
+    const setActiveItem=useInfoStore(state=>state.setActiveItem)
     const logOut=useStore(state=>state.logOut)
     const [open, setOpen] = React.useState(false);
 
@@ -68,7 +70,7 @@ export default function Navigation() {
             handleActiveNavigationFromActive()
             handleActiveItemSelect('Item1')}}
           >
-            <NavLink to={"#"}>
+            <NavLink to={"/"}>
               <div className={clases.icon}><PermIdentityIcon/></div>
               <div className={clases.text}>Загальне </div>
             </NavLink>
@@ -79,7 +81,7 @@ export default function Navigation() {
                       handleActiveNavigationFromActive()
                       handleActiveItemSelect('Item2')}}
           >
-            <NavLink to={"#"}>
+            <NavLink to={"/payment"}>
               <div className={clases.icon}><PaidIcon/></div>
               <div className={clases.text}>Оплати</div>
             </NavLink>
@@ -90,7 +92,7 @@ export default function Navigation() {
                       handleActiveNavigationFromActive()
                       handleActiveItemSelect('Item3')}}
           >
-            <NavLink to={"#"}>
+            <NavLink to={"/info"}>
               <div className={clases.icon}><InfoIcon/></div>
               <div className={clases.text}>Додатково</div>
             </NavLink>
@@ -101,7 +103,7 @@ export default function Navigation() {
                       handleActiveNavigationFromActive()
                       handleActiveItemSelect('Item4')}}
           >
-            <NavLink to={"#"}>
+            <NavLink to={"/news"}>
               <div className={clases.icon}><NewspaperIcon/></div>
               <div className={clases.text}>Новини</div>
             </NavLink>
