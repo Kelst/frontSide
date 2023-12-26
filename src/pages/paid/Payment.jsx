@@ -126,9 +126,9 @@ export default function Payment() {
   return (
     <section>
 
-<div className='  md:block relative z-10 flex justify-center items-center flex-col  '>
+<div className='  md:block relative z-10   '>
 
-<Box sx={{ width: '80%' }} >
+<Box sx={{ width: '100%',bgcolor:"black",opacity:0.7 }} >
       <Box sx={{ bgcolor: '' }}>
         <StyledTabs
           value={value}
@@ -148,7 +148,7 @@ export default function Payment() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' bg-slate-50 w-[80%] w-max-[1200px] opacity-90 rounded-md'
+         className=' bg-slate-50 w-max-[1200px] opacity-90 rounded-md'
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
          <Paid/>

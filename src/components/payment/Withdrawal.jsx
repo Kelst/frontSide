@@ -77,6 +77,7 @@ export default function Withdrawal() {
             <TableCell align="right">Опис</TableCell>
             <TableCell align="right">Сума</TableCell>
             <TableCell align="right">Депозит</TableCell>
+            <TableCell align="right">Тип</TableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
@@ -86,6 +87,7 @@ export default function Withdrawal() {
               <TableCell align="right">{row.description}</TableCell>
               <TableCell align="right">{row.sum}</TableCell>
               <TableCell align="right">{ccyFormat(row.deposit)}</TableCell>
+              <TableCell align="right">{row.type}</TableCell>
             </StyledTableRow>
           ))}
           <TableRow>
