@@ -12,6 +12,7 @@ import IconMenuGridO from "../icons/IconMenuGrid0";
 import Loader from "../loader/Loader";
 import ExitDialog from "../dialog/ExitDialog";
 import useInfoStore from "../../store/infoStore";
+import HamburgerBtn from "../hamburger/HamburgerBtn";
 
 export default function Navigation() {
   
@@ -59,7 +60,7 @@ export default function Navigation() {
       active ? 'rotate-180 translate-x-36' : ''
     }`}   onClick={handleActiveNavigation}>
           {/* <KeyboardTabOutlinedIcon  className={active?'    ml-auto': `  `} /> */}
-          <IconMenuGridO/>
+         <HamburgerBtn/>
           </div>
         </li>
 

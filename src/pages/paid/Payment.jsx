@@ -95,7 +95,7 @@ const StyledTabs = styled((props) => (
     maxWidth: 40,
     backgroundColor: 'black',
   },
-  display:"flex"
+ 
 });
 
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
@@ -128,10 +128,10 @@ export default function Payment() {
   return (
     <section>
 
-<div className='  md:block relative z-10   '>
+<div className='  md:block    '>
 
-<div className=' w-[1200px]' sx={{ width: '100',opacity:0.7 }} >
-      <div sx={{ bgcolor: '' }}>
+<div className=' w-[1200px]'  >
+      <div className=' relative  z-50'>
         <StyledTabs
           value={value}
           onChange={handleChange}
@@ -154,7 +154,7 @@ export default function Payment() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' bg-slate-50  w-max-[1000px]  flex  justify-center items-center opacity-90 rounded-md'
+         className=' bg-slate-50  w-max-[1000px]  flex  justify-center items-center  relative  rounded-md'
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
          <Paid/>

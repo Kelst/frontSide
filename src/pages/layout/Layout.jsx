@@ -58,7 +58,7 @@ export default function Layout() {
           value: "",
         },
       },
-      fpsLimit: 120,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
@@ -66,13 +66,13 @@ export default function Layout() {
             mode: "push",
           },
           onHover: {
-            enable: true,
+            enable: false,
             mode: "repulse",
           },
         },
         modes: {
           push: {
-            quantity: 6,
+            quantity: 4,
           },
           repulse: {
             distance: 200,
@@ -97,15 +97,15 @@ export default function Layout() {
           outModes: {
             default: "bounce",
           },
-          random: false,
-          speed: 6,
-          straight: false,
+          random: true,
+          speed: 2,
+          straight: true,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 70,
         },
         opacity: {
           value: 0.5,
@@ -114,7 +114,7 @@ export default function Layout() {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 5 },
+          value: { min: 5, max: 7 },
         },
       },
       detectRetina: true,

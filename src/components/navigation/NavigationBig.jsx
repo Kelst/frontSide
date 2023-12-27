@@ -75,8 +75,8 @@ setActiveItem(item)
       <div className={` ${clases.bgImg}`}>
 
 </div>
-    <div className={ ' transition-all duration-500 bg-slate-100 -translate-y-80 md:translate-y-[0px] relative ' +' '+clases.navigation }>
-      <img src={logo} width={210} height={200} className=' absolute left-[-23px] mt-8  z-10'/>
+    <div className={ '  transition-all duration-500 bg-slate-100 -translate-y-80 md:translate-y-[0px] relative -z-10 ' +' '+clases.navigation }>
+      <img src={logo} width={210} height={200} className='  object-cover absolute left-[-23px] mt-8 -z-10  '/>
    
 
         <div className=' absolute font-bold  hidden 2xl:block  top-[90px] transition-all duration-500  left-0 uppercase text-white text-[10px]  2xl:top-[21px] 2xl:left-60 2xl:text-black '> 
