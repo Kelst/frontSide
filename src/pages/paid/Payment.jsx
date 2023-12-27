@@ -10,6 +10,7 @@ import { useTheme } from '@emotion/react';
 import Typography from '@mui/material/Typography';
 import Paid from '../../components/payment/Paid';
 import Withdrawal from '../../components/payment/Withdrawal';
+import Pay from '../../components/payment/Pay';
 
 
 function TabPanel(props) {
@@ -85,15 +86,16 @@ const StyledTabs = styled((props) => (
   />
 ))({
   '& .MuiTabs-indicator': {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
+   
+    backgroundColor: 'black',
+    marginBottom:"10px",
+    marginTop:"10px",
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
-    width: '100%',
     backgroundColor: 'black',
   },
+  display:"flex"
 });
 
 const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
@@ -110,7 +112,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
      
     },
     '&.MuiTabs-indicator':{
-      color:"white"
+      color:"black"
     }
   }),
 );
@@ -128,27 +130,31 @@ export default function Payment() {
 
 <div className='  md:block relative z-10   '>
 
-<Box sx={{ width: '100%',bgcolor:"black",opacity:0.7 }} >
-      <Box sx={{ bgcolor: '' }}>
+<div className=' w-[1200px]' sx={{ width: '100',opacity:0.7 }} >
+      <div sx={{ bgcolor: '' }}>
         <StyledTabs
           value={value}
           onChange={handleChange}
+          scrollButtons
+          allowScrollButtonsMobile
+          variant="scrollable"
+
         >
           <StyledTab label="Оплати" />
           <StyledTab label="Зняття грошей" />
           <StyledTab label="Поповнення рахунку" />
         </StyledTabs>
         
-        <Box sx={{ p: 3 }} />
+        <div sx={{ p: 3 }} />
    
-      </Box>
-    </Box>
+      </div>
+    </div>
   
     <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' bg-slate-50 w-max-[1200px] opacity-90 rounded-md'
+         className=' bg-slate-50  w-max-[1000px]  flex  justify-center items-center opacity-90 rounded-md'
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
          <Paid/>
@@ -157,7 +163,7 @@ export default function Payment() {
           <Withdrawal/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          <Pay/>
         </TabPanel>
       </SwipeableViews>
 </div>

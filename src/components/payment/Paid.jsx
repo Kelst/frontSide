@@ -62,7 +62,7 @@ export default function Paid() {
   return (
     <div className=' w-auto  shadow-md'>
     <TableContainer component={Paper}>
-      <Table sx={{ maxWidth: 1000 }} aria-label="spanning table">
+      <Table sx={{ width:'1000px' }} aria-label="spanning table">
         <TableHead>
           <StyledTableRow>
             <TableCell>Дата</TableCell>
