@@ -130,7 +130,7 @@ export default function Payment() {
 
 <div className='  md:block    '>
 
-<div className=' w-[1200px]'  >
+<div className=' w-[290px] ss:w-[350px] sm:w-[480px] sm:mt-[50px] md:w-auto'  >
       <div className=' relative  z-50'>
         <StyledTabs
           value={value}
@@ -145,7 +145,7 @@ export default function Payment() {
           <StyledTab label="Поповнення рахунку" />
         </StyledTabs>
         
-        <div sx={{ p: 3 }} />
+        <div sx={{ p: 3 }}  />
    
       </div>
     </div>
@@ -154,7 +154,7 @@ export default function Payment() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' bg-slate-50  w-max-[1000px]  flex  justify-center items-center  relative  rounded-md'
+         className=' bg-slate-50  w-max-[1000px] w-[285px] ss:w-[350px] sm:w-[580px]  md:w-[700px]  xl:w-[1200px] mr-2 flex  justify-center items-center  relative  rounded-md'
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
          <Paid/>

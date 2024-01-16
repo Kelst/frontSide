@@ -22,6 +22,9 @@ export default {
             transform:'rotate(-360deg)'
           }
         }
+      },
+      screens:{
+        'ss': '500px',
       }
       
     },

@@ -11,7 +11,8 @@ import BuyButton from '../button/buybutton/BuyButton';
 
 export default function () {
   return (
-    <div className=' grid grid-cols-3 gap-3' >
+<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-2 gap-3'>
+
    <div className="max-w-sm p-[2px] bg-white border border-gray-200 rounded-lg shadow relative">
  <BuyButton/>
      <img src={liqpay} alt="" className=' object-contain w-[300px] h-[300px] object-center bg-white p-2'   loading='lazy' />

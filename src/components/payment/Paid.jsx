@@ -42,7 +42,8 @@ const paid={
         description:"24N",
         sum:243.0,
         deposit:-274.0
-    }
+    },
+ 
 ]}
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
@@ -56,15 +57,52 @@ function ccyFormat(num) {
     '&:last-child td, &:last-child th': {
       border: 0,
     },
+   
   }));
-    
+ 
 export default function Paid() {
   return (
-    <div className=' w-auto  shadow-md'>
-    <TableContainer component={Paper}>
-      <Table sx={{ width:'1000px' }} aria-label="spanning table">
+    <div className='     shadow-md   bg-white     ' >
+    <TableContainer component={Paper}   sx={{
+    width: "280px",
+    height: "55vh",
+    fontSize: "9px",
+   
+    '@media (min-width: 500px)': {
+      width: '300px',
+      '@media (min-width: 640px)': {
+        width: '550px',
+      },
+      '@media (min-width: 768px)': {
+        width: '680px',
+      },
+      '@media (min-width: 1280px)': {
+        width: '1180px',
+      },
+    },
+  }}>
+      <Table 
+       sx={{
+       
+        width: '400px',
+     
+        '@media screen and (min-width: 500px)': {
+          width: '300px',
+        },
+        '@media screen and (min-width: 640px)': {
+          width: '550px',
+        },
+        '@media (min-width: 768px)': {
+          width: '680px',
+        },
+        '@media (min-width: 1280px)': {
+          width: '1180px',
+        },
+        // Додайте інші стилі, які вам потрібні
+      }}
+      aria-label="spanning table">
         <TableHead>
-          <StyledTableRow>
+          <StyledTableRow >
             <TableCell>Дата</TableCell>
             <TableCell align="right">Опис</TableCell>
             <TableCell align="right">Сума</TableCell>

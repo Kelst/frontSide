@@ -42,7 +42,7 @@ export default function Layout() {
   const navigate=useNavigate()
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
+      await loadSlim(engine,false);
     }).then(() => {
       setInit(true);
     });
@@ -154,7 +154,7 @@ useEffect(()=>{
     <NavigationBig  />
 
     </div>
-    <div className={`w-[360px] m-auto mt-[150px]   h-screen  mr-auto md:w-[896px]  sm:mr-auto md:mr-auto  xl:w-[1450px] xl:mr-auto  flex flex-col justify-start   items-center ${style.bigBg} `}>
+    <div className={`w-[250] m-auto mt-[150px]   h-[calc(100vh-150px)]  mr-auto md:w-[896px]  sm:mr-auto md:mr-auto  xl:w-[1450px] xl:mr-auto  flex flex-col justify-start   items-center ${style.bigBg} `}>
     <Outlet/>
     </div>
     </div>
