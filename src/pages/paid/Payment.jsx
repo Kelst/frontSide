@@ -39,12 +39,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
+
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
   textTransform: 'none',
   minWidth: 0,
@@ -85,11 +80,15 @@ const StyledTabs = styled((props) => (
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
 ))({
+  position:'relative',
+  zIndex:0,
   '& .MuiTabs-indicator': {
    
     backgroundColor: 'black',
     marginBottom:"10px",
     marginTop:"10px",
+    
+    
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
@@ -128,16 +127,17 @@ export default function Payment() {
   return (
     <section>
 
-<div className='  md:block    '>
+<div className='  md:block   '>
 
-<div className=' w-[290px] ss:w-[350px] sm:w-[480px] sm:mt-[50px] md:w-auto'  >
-      <div className=' relative  z-50'>
+<div className=' w-[250px] ss:w-[300px]   sm:w-[480px] sm:mt-[50px] md:w-auto'  >
+      <div className=' relative  z-2'>
         <StyledTabs
           value={value}
           onChange={handleChange}
           scrollButtons
           allowScrollButtonsMobile
           variant="scrollable"
+         
 
         >
           <StyledTab label="Оплати" />
@@ -154,7 +154,7 @@ export default function Payment() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' bg-slate-50  w-max-[1000px] w-[285px] ss:w-[350px] sm:w-[580px]  md:w-[700px]  xl:w-[1200px] mr-2 flex  justify-center items-center  relative  rounded-md'
+         className=' w-[80vw]'
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
          <Paid/>

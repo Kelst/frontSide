@@ -24,6 +24,7 @@ export default {
         }
       },
       screens:{
+        'sl':'400px',
         'ss': '500px',
       }
       

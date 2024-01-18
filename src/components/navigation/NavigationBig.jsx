@@ -61,10 +61,10 @@ setActiveItem(item)
     <div  className=' ' >
      <div className={clases.bgImgM}></div>
 
-      <div className={` shadow-md  shadow-zinc-800 transition-all translate-y-[0px] p-2 md:-translate-y-80 max-w-[360px]  max-h-[120px] bg-white   fixed z-[100]   left-[calc(100%/2-52px)]  sm:left-[calc(100%/2-58px)]   top-2  rounded-md `}>
+      <div className={` shadow-md  shadow-zinc-800 transition-all translate-y-[0px] p-2 md:-translate-y-80 max-w-[360px]  max-h-[120px] bg-white   fixed z-[5]   left-[calc(100%/2-52px)]  sm:left-[calc(100%/2-58px)]   top-2  rounded-md `}>
         <img src={minLogo} width={'100px'} height={'100px'} className={`absolute  left-[26%] top-[-2px] z-50 `}  alt="" />
-            <div className={` flex flex-col justify-center items-center  relative z-10   `}>
-            <div className='p-2  z-50 text-center font-bold  cursor-pointer  uppercase hover:shadow-red-900  mx-2 shadow-none mt-10 text-xs'>Особистий  кабінет</div>
+            <div className={` flex flex-col justify-center items-center  relative z-1   `}>
+            <div className='p-2  z-1 text-center font-bold  cursor-pointer  uppercase hover:shadow-red-900  mx-2 shadow-none mt-10 text-xs'>Особистий  кабінет</div>
               <span className={'text-[11px] text-red-700 shadow-sm'}>
                 {user.name}
               </span>

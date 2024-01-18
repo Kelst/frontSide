@@ -62,43 +62,20 @@ function ccyFormat(num) {
  
 export default function Paid() {
   return (
-    <div className='     shadow-md   bg-white     ' >
+    <div className='     shadow-md   bg-white   rounded-md  p-6  ' >
     <TableContainer component={Paper}   sx={{
-    width: "280px",
+    width: "auto",
     height: "55vh",
     fontSize: "9px",
    
-    '@media (min-width: 500px)': {
-      width: '300px',
-      '@media (min-width: 640px)': {
-        width: '550px',
-      },
-      '@media (min-width: 768px)': {
-        width: '680px',
-      },
-      '@media (min-width: 1280px)': {
-        width: '1180px',
-      },
-    },
+   
   }}>
       <Table 
        sx={{
        
-        width: '400px',
+        width: '70vw',
      
-        '@media screen and (min-width: 500px)': {
-          width: '300px',
-        },
-        '@media screen and (min-width: 640px)': {
-          width: '550px',
-        },
-        '@media (min-width: 768px)': {
-          width: '680px',
-        },
-        '@media (min-width: 1280px)': {
-          width: '1180px',
-        },
-        // Додайте інші стилі, які вам потрібні
+      
       }}
       aria-label="spanning table">
         <TableHead>
@@ -112,8 +89,8 @@ export default function Paid() {
         <TableBody>
         {paid.paidData.map((row) => (
             <StyledTableRow key={row.date}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell align="right">{row.description}</TableCell>
+              <TableCell >{row.date}</TableCell>
+              <TableCell className=' p-0' align="right">{row.description}</TableCell>
               <TableCell align="right">{row.sum}</TableCell>
               <TableCell align="right">{ccyFormat(row.deposit)}</TableCell>
             </StyledTableRow>

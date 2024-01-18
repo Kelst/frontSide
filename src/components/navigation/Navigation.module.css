@@ -13,7 +13,9 @@
     z-index: 100;
 }
 .sideBar.active{
-    width: 200px;
+    width: 100vw;
+    position: relative;
+    z-index: 1000;
     
 }
 .sideBar ul li.active{

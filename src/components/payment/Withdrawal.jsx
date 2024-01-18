@@ -68,44 +68,22 @@ function ccyFormat(num) {
     
 export default function Withdrawal() {
   return (
-    <div className={style.animationBorder}>
-     <TableContainer component={Paper}   sx={{
-    width: "280px",
-    height: "auto",
+    <div className='     shadow-md   bg-white   rounded-md  p-6  ' >
+    <TableContainer component={Paper}   sx={{
+    width: "auto",
+    height: "55vh",
     fontSize: "9px",
    
-    '@media (min-width: 500px)': {
-      width: '300px',
-      '@media (min-width: 640px)': {
-        width: '550px',
-      },
-      '@media (min-width: 768px)': {
-        width: '680px',
-      },
-      '@media (min-width: 1280px)': {
-        width: '1180px',
-      },
-    },
+   
   }}>
       <Table 
        sx={{
        
-        width: '400px',
+        width: '70vw',
      
-        '@media screen and (min-width: 500px)': {
-          width: '300px',
-        },
-        '@media screen and (min-width: 640px)': {
-          width: '550px',
-        },
-        '@media (min-width: 768px)': {
-          width: '680px',
-        },
-        '@media (min-width: 1280px)': {
-          width: '1180px',
-        },
-        // Додайте інші стилі, які вам потрібні
-      }}>
+      
+      }}
+      aria-label="spanning table">
         <TableHead>
           <StyledTableRow>
             <TableCell>Дата</TableCell>
