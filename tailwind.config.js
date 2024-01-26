@@ -26,6 +26,11 @@ export default {
       screens:{
         'sl':'400px',
         'ss': '500px',
+        'smm':'469px',
+        'smm1':'200px',
+        'md1':'1020px',
+
+  
       }
       
     },

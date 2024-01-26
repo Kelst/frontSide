@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@mui/material/styles';
 import style from  "./Paid.module.css"
-
+import { useTheme } from '@emotion/react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -55,7 +55,13 @@ const paid={
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
   }
-  
+  const WhiteTextTableCell = styled(TableCell)(({ theme }) => ({
+    color: 'white',
+    fontSize: 12,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 8,
+    },
+  }));
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
@@ -68,7 +74,7 @@ function ccyFormat(num) {
     
 export default function Withdrawal() {
   return (
-    <div className='     shadow-md   bg-white   rounded-md  p-6  ' >
+    <div className='     shadow-md   bg-white   rounded-md  p-2  ' >
     <TableContainer component={Paper}   sx={{
     width: "auto",
     height: "55vh",
@@ -77,41 +83,36 @@ export default function Withdrawal() {
    
   }}>
       <Table 
-       sx={{
-       
-        width: '70vw',
-     
-      
-      }}
+       className={style.animationBorderSM}
       aria-label="spanning table">
         <TableHead>
           <StyledTableRow>
-            <TableCell>Дата</TableCell>
-            <TableCell align="right">Опис</TableCell>
-            <TableCell align="right">Сума</TableCell>
-            <TableCell align="right">Депозит</TableCell>
-            <TableCell align="right">Тип</TableCell>
+            <WhiteTextTableCell>Дата</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">Опис</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">Сума</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">Депозит</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">Тип</WhiteTextTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
         {paid.paidData.map((row) => (
             <StyledTableRow key={row.date}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell align="right">{row.description}</TableCell>
-              <TableCell align="right">{row.sum}</TableCell>
-              <TableCell align="right">{ccyFormat(row.deposit)}</TableCell>
-              <TableCell align="right">{row.type}</TableCell>
+              <WhiteTextTableCell>{row.date}</WhiteTextTableCell>
+              <WhiteTextTableCell align="right">{row.description}</WhiteTextTableCell>
+              <WhiteTextTableCell align="right">{row.sum}</WhiteTextTableCell>
+              <WhiteTextTableCell align="right">{ccyFormat(row.deposit)}</WhiteTextTableCell>
+              <WhiteTextTableCell align="right">{row.type}</WhiteTextTableCell>
             </StyledTableRow>
           ))}
           <TableRow>
-            <TableCell rowSpan={2} />
-            <TableCell colSpan={2}>Всього</TableCell>
-            <TableCell align="right">{paid.count}</TableCell>
+            <WhiteTextTableCell rowSpan={2} />
+            <WhiteTextTableCell colSpan={2}>Всього</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">{paid.count}</WhiteTextTableCell>
           </TableRow>
 
           <TableRow>
-            <TableCell colSpan={2}>Сума</TableCell>
-            <TableCell align="right">{paid.sum}</TableCell>
+            <WhiteTextTableCell colSpan={2}>Сума</WhiteTextTableCell>
+            <WhiteTextTableCell align="right">{paid.sum}</WhiteTextTableCell>
           </TableRow>
         </TableBody>
       </Table>

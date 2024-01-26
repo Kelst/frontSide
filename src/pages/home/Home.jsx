@@ -6,9 +6,6 @@ import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import CompassCalibrationOutlinedIcon from '@mui/icons-material/CompassCalibrationOutlined';
 import GlasmorphizmButton from '../../components/button/glasmorphizm/GlasmorphizmButton';
 import MacCreditDialog from '../../components/dialog/MacCreditDialog';
-
-import useStore from '../../store/store';
-
 import useInfoStore from '../../store/infoStore';
 import AddService from '../../components/dialog/AddService';
 import StopPlayDialog from '../../components/dialog/StopPlayDialog';

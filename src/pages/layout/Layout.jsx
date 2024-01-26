@@ -154,7 +154,7 @@ useEffect(()=>{
     <NavigationBig  />
 
     </div>
-    <div className={`w-[250] m-auto mt-[150px]   h-[calc(100vh-150px)]  mr-auto md:w-[896px]  sm:mr-auto md:mr-auto  xl:w-[1450px] xl:mr-auto  flex flex-col justify-start   items-center ${style.bigBg} `}>
+    <div className={`h-[70vh] w-[275px] m-auto  px-2 mt-[200px] m-x-10 smm:w-[350px] ss:w-[400px]  sm:w-[550px] md:w-[900px] md1:w-[1019px] xl:w-[1100px] 2xl:w-[1450px]  `}>
     <Outlet/>
     </div>
     </div>

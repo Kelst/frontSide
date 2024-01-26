@@ -23,9 +23,10 @@ function TabPanel(props) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
+
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{   }}>
           <Typography>{children}</Typography>
         </Box>
       )} 
@@ -40,39 +41,7 @@ TabPanel.propTypes = {
 };
 
 
-const AntTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-  textTransform: 'none',
-  minWidth: 0,
-  [theme.breakpoints.up('sm')]: {
-    minWidth: 0,
-  },
-  fontWeight: theme.typography.fontWeightRegular,
-  marginRight: theme.spacing(1),
-  color: 'rgba(0, 0, 0, 0.85)',
-  fontFamily: [
-    '-apple-system',
-    'BlinkMacSystemFont',
-    '"Segoe UI"',
-    'Roboto',
-    '"Helvetica Neue"',
-    'Arial',
-    'sans-serif',
-    '"Apple Color Emoji"',
-    '"Segoe UI Emoji"',
-    '"Segoe UI Symbol"',
-  ].join(','),
-  '&:hover': {
-    color: '#40a9ff',
-    opacity: 1,
-  },
-  '&.Mui-selected': {
-    color: '#1890ff',
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-  '&.Mui-focusVisible': {
-    backgroundColor: '#d1eaff',
-  },
-}));
+
 
 const StyledTabs = styled((props) => (
   <Tabs
@@ -129,7 +98,7 @@ export default function Payment() {
 
 <div className='  md:block   '>
 
-<div className=' w-[250px] ss:w-[300px]   sm:w-[480px] sm:mt-[50px] md:w-auto'  >
+<div className=''  >
       <div className=' relative  z-2'>
         <StyledTabs
           value={value}
@@ -154,12 +123,12 @@ export default function Payment() {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
-         className=' w-[80vw]'
+         className={style.animationBorderSM}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel value={value} index={0} dir={theme.direction} >
          <Paid/>
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
+        <TabPanel value={value} index={1} dir={theme.direction} >
           <Withdrawal/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
