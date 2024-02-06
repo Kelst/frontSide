@@ -57,7 +57,7 @@ export default function Navigation() {
       <ul>
         <li className={`${clases.logo}     `}>
           <div     className={` cursor-pointer mt-5 flex transition-transform  duration-300 ease-in  transform ${
-      active ? 'rotate-180 translate-x-[80vw]' : ''
+      active ? 'rotate-180 translate-x-[80vw]  bg-opacity-10 backdrop-blur-lg bg-white' : ''
     }`}   onClick={handleActiveNavigation}>
           {/* <KeyboardTabOutlinedIcon  className={active?'    ml-auto': `  `} /> */}
          <HamburgerBtn/>

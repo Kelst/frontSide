@@ -7,13 +7,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import GlazmorphizmCard from '../glazmorphizmCard/GlazmorphizmCard';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function MacCreditDialog({open,handleClose,handleAction}) {
+export default function TariffDialog({open,handleClose,handleAction,tarriffList}) {
   return (
-    <React.Fragment>
+    <React.Fragment  >
      
       <Dialog
         open={open}
@@ -21,8 +22,10 @@ export default function MacCreditDialog({open,handleClose,handleAction}) {
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
+        fullWidth={true}
+        maxWidth={'lg'}
       >
-        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"32px"}}>Встановити кредит</DialogTitle>
+        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"18px"}}>Доступні тарифні плани</DialogTitle>
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -35,21 +38,11 @@ export default function MacCreditDialog({open,handleClose,handleAction}) {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent>
-        <div className="max-w-2xl mx-auto p-8">
-      <h2 className="text-3xl font-bold mb-4">Додаткові 5 днів Інтернету</h2>
-      <p className="text-gray-700 mb-6">
-        Одноразово продовжте свій Інтернет на цілих 5 днів за місяць, щоб завжди бути зв'язаними, коли це найбільше потрібно.
-      </p>
-
-      <h2 className="text-3xl font-bold mb-4">Одна унікальна можливість щомісяця</h2>
-      <p className="text-gray-700 mb-6">
-        Ця можливість доступна вам тільки один раз за календарний місяць, роблячи її винятковою та цінною.
-      </p>
-    </div>
+        <DialogContent  >
+        <GlazmorphizmCard tarriffList={tarriffList}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}sx={{color:'black'}}>Продовжити послугу</Button>
+          <Button onClick={handleClose}sx={{color:'black'}}>Ок</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -96,8 +96,7 @@ export default function Payment() {
   return (
     <section>
 
-<div className='  md:block   '>
-
+<div className='md:block'>
 <div className=''  >
       <div className=' relative  z-2'>
         <StyledTabs
@@ -105,10 +104,8 @@ export default function Payment() {
           onChange={handleChange}
           scrollButtons
           allowScrollButtonsMobile
-          variant="scrollable"
-         
-
-        >
+          variant="scrollable">
+            
           <StyledTab label="Оплати" />
           <StyledTab label="Зняття грошей" />
           <StyledTab label="Поповнення рахунку" />

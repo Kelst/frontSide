@@ -12,7 +12,10 @@ import StopPlayDialog from '../../components/dialog/StopPlayDialog';
 import GlasmorphizmButtonMob from '../../components/button/glasmorphizm/GlasmorphizmButtonMob';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { daysAndHoursUntilEndOfMonth, extractInfoFromString } from '../../tools/tools';
- 
+import IconButton from '@mui/material/IconButton';
+import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
+import EditPhone from '../../components/dialog/EditPhone';
+import TariffDialog from '../../components/dialog/TariffDialog';
 
 const user={
   name:"Безкоровайний Владислав Андрійович",
@@ -39,12 +42,23 @@ const user={
       login:"dorosh_ukr50",
     }
   ]
+,
+tariffAvaibles:[
+    {month_fee:180,name:"ЧЕРНІВЦІ-КОМФОРТ-300(180)_Internet"},
+    {month_fee:207,name:"ЧЕРНІВЦІ-КОМФОРТ-300(207)_Internet+TV"},
+    {month_fee:190,name:"ЧЕРНІВЦІ-КОМФОРТ-500(190)_Internet"},
+    {month_fee:213,name:"ЧЕРНІВЦІ-КОМФОРТ-500(213)_Internet+TV"},
+    {month_fee:350,name:"ЧЕРНІВЦІ-КОМФОРТ-1000(309)_Internet+TV"},
+    {month_fee:309,name:"ЧЕРНІВЦІ-КОМФОРТ-1000(309)_Internet+TV"},
+    ]
 
  }
 export default function Home() {
 const [openDialogCredit,setOpenDialogCredit]=useState(false)
 const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
+const [openDialogEditPhone,setOpenDialogEditPhone]=useState(false)
+const [openDialogTariff,setOpenDialogTariff]=useState(false)
 
 
 const setLoader=useInfoStore(state=>state.setLoader) 
@@ -54,6 +68,11 @@ const showAllert=useInfoStore(state=>state.showAllert)
 function handleStopPlayLogin(){
  
   setOpenDialogStopPlay(true)
+
+}
+function handleEditPhone(){
+ 
+  setOpenDialogEditPhone(true)
 
 }
 function handleClearMac(){
@@ -71,6 +90,10 @@ setOpenDialogService(true)
 }
 function handleStaticIp(){
 
+}
+
+function handleDisplayTariff(){
+  setOpenDialogTariff(true)
 }
 
 
@@ -92,12 +115,18 @@ function handleStaticIp(){
         <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>
           <div className={"bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
             <h2 className="text-xl font-bold mb-4 text-red-500">Основна інформація</h2>
-            <p className="text-gray-300 mb-2">Телефон: {user.phone}</p>
+           
+           <div className='flex  items-center  justify-start  mb-2'> <p className="text-gray-300">Телефон: {user.phone}</p> 
+            <IconButton aria-label="edited" className='mb-2' onClick={handleEditPhone} >
+        <ModeEditOutlineTwoToneIcon className=' text-gray-300 '  fontSize='small'/>
+      </IconButton>
+      </div>
             <p className="text-gray-300 mb-2">Адреса: {user.adress}</p>
             <p className="text-gray-300">Стан інтернет зєднання: {user.statusInternet ? 'Active' : 'Inactive'}</p>
             <p className="text-gray-300">Стан  логіну: {user.statusInternet ? 'Active' : 'Inactive'}</p>
 
             <GlasmorphizmButton label='Призупинити логін' handleAction={handleStopPlayLogin}/>
+         
 
           </div>
 
@@ -147,6 +176,7 @@ function handleStaticIp(){
            <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'  />
            <GlasmorphizmButton label='Додаткові послуги' handleAction={handleAddService} />
            <GlasmorphizmButton label='Статична IP'/>
+           <GlasmorphizmButton handleAction={handleDisplayTariff}  label='Тарифні плани'/>
            </div>
           
         </div>
@@ -227,6 +257,7 @@ function handleStaticIp(){
    <GlasmorphizmButtonMob handleAction={handleSetCredit} label='Встановити кредит'  />
    <GlasmorphizmButtonMob label='Додаткові послуги' handleAction={handleAddService} />
    <GlasmorphizmButtonMob label='Статична IP'/>
+   <GlasmorphizmButtonMob  handleAction={handleDisplayTariff}   label='Тарифні плани'/>
 
    
   
@@ -236,9 +267,11 @@ function handleStaticIp(){
     </div>
     </div>
 
-    <MacCreditDialog open={openDialogCredit} handleAction={showAllert} handleClose={()=>{setOpenDialogCredit(false)}}   />
+     <MacCreditDialog open={openDialogCredit} handleAction={showAllert} handleClose={()=>{setOpenDialogCredit(false)}}   />
      <AddService open={openDialogService} handleClose={()=>setOpenDialogService(false)}/>
      <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} />
+     <EditPhone open={openDialogEditPhone} handleClose={()=>{setOpenDialogEditPhone(false)}}/>
+     <TariffDialog open={openDialogTariff} handleClose={()=>{setOpenDialogTariff(false)}} tarriffList={user.tariffAvaibles}/>
       </section>
 
   

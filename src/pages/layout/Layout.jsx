@@ -141,7 +141,7 @@ useEffect(()=>{
     <div className='pt-0 '>
            <Loader/>
            <CustomAlert/>
-      { init && <Particles
+           { init && <Particles
         id="tsparticleshexagon"
         className="ua-particles"
         url="hexagonPath.json"
@@ -154,11 +154,12 @@ useEffect(()=>{
     <NavigationBig  />
 
     </div>
+   
     <div className={`h-[70vh] w-[275px] m-auto  px-2 mt-[200px] m-x-10 smm:w-[350px] ss:w-[400px]  sm:w-[550px] md:w-[900px] md1:w-[1019px] xl:w-[1100px] 2xl:w-[1450px]  `}>
     <Outlet/>
     </div>
     </div>
-
+   
     </div>
   )
 }

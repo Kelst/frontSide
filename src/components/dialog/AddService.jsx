@@ -7,6 +7,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import Bay from '../../assets/bay.png'
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -25,6 +27,18 @@ export default function AddService({open,handleClose}) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"32px"}}>{"Додаткові послуги"}</DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
         <DialogContent>
         <div className="p-4">
   <h2 className="text-2xl font-bold mb-4">Вартість додаткових послуг Intelekt:</h2>

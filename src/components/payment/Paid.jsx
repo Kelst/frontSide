@@ -70,11 +70,12 @@ function ccyFormat(num) {
 export default function Paid() {
   const theme = useTheme(); 
   return (
-    <div className='     shadow-md   bg-white  rounded-md  p-2 m-1   ' >
+    <div className='     shadow-md scroll-auto   bg-white  rounded-md  p-2 m-1   ' >
     <TableContainer component={Paper}   sx={{
     width: "auto",
     height: "55vh",
     fontSize: "9px",
+  
 
    
   }}>
