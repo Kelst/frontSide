@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
 import EditPhone from '../../components/dialog/EditPhone';
 import TariffDialog from '../../components/dialog/TariffDialog';
+import { NavLink } from 'react-router-dom';
 
 const user={
   name:"Безкоровайний Владислав Андрійович",
@@ -30,7 +31,7 @@ const user={
   deposit:"0",
   monthlyPayment:"274",
   dateOfEndCredits:"2023-12-15",
-  tariff:"Чернівці-ПС-300(274)_Internet+TV",
+  tariff:"ЧЕРНІВЦІ-КОМФОРТ-1000(309)_Internet+TV",
   lastPay:"2023-01-15  225 грн",
   ip:"192.5.4.7",
   duration:"+4 01:11:03",
@@ -48,7 +49,7 @@ tariffAvaibles:[
     {month_fee:207,name:"ЧЕРНІВЦІ-КОМФОРТ-300(207)_Internet+TV"},
     {month_fee:190,name:"ЧЕРНІВЦІ-КОМФОРТ-500(190)_Internet"},
     {month_fee:213,name:"ЧЕРНІВЦІ-КОМФОРТ-500(213)_Internet+TV"},
-    {month_fee:350,name:"ЧЕРНІВЦІ-КОМФОРТ-1000(309)_Internet+TV"},
+    {month_fee:350,name:"ЧЕРНІВЦІ-КОМФОРТ-1000(350)_Internet"},
     {month_fee:309,name:"ЧЕРНІВЦІ-КОМФОРТ-1000(309)_Internet+TV"},
     ]
 
@@ -135,7 +136,18 @@ function handleDisplayTariff(){
             <p className="text-gray-300 mb-2 ">Стан рахунку: {user.balance} грн.</p>
            <div className=' flex gap-x-3'><p className="text-gray-300 mb-2">Кредит: {user.deposit} грн.</p><p className="text-gray-300 mb-2">Кредит до: {user.dateOfEndCredits}</p></div> 
           <div className="text-gray-300 mb-2">  
-          <p className="text-gray-300 mb-2">Місячна оплата: {user.monthlyPayment} грн.</p>
+          <p className="text-gray-300 mb-2">Місячна оплата: {user.monthlyPayment} грн.
+          <NavLink to={"/payment"}> 
+<div  className={  style.animationBorderSM + ` cursor-pointer relative inline-flex items-center justify-center p-4 px-2 py-1 ml-1 overflow-hidden font-medium   transition duration-300 ease-out border-2 group`}>
+<span className="absolute inset-0 flex items-center justify-center w-full h-full  duration-300 -translate-x-full  group-hover:translate-x-0 ease">
+<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+</span>
+<span className="absolute flex items-center justify-center w-full h-full tracking-widest	  text-white transition-all duration-300 transform group-hover:translate-x-full ease">оплатити</span>
+<span className="relative invisible">Button Text</span>
+</div>
+</NavLink>
+          </p>
+          
           <p className="text-gray-300 mb-2">Останній платіж: {user.lastPay} </p>
          <div className=' flex items-center gap-x-2 mt-1'> <p className="text-gray-300">Зняття через: </p>
         
@@ -146,6 +158,7 @@ function handleDisplayTariff(){
     </span>
     days
   </div> 
+  
   <div className={"flex flex-col justify-center items-center p-1 bg-neutral rounded-box text-neutral-content  text-md"+" "+style.animationBorderSM}>
     <span className="countdown  text-md">
       <span  style={{"--value":daysAndHoursUntilEndOfMonth().hours}}>{daysAndHoursUntilEndOfMonth().hours}</span>
@@ -153,6 +166,7 @@ function handleDisplayTariff(){
     hours
   </div> 
 </div>
+
 </div>
 
           </div>
@@ -204,6 +218,15 @@ function handleDisplayTariff(){
           <div className="text-lg font-semibold mb-2  text-gray-200 relative  p-[5px] rounded-md">Інформація про тариф <PaidOutlinedIcon className='absolute top-[-25px] z-[100] border-t-2 rounded-2xl left-[0%]'/></div>
           <p className="text-md mb-2 text-gray-200">Тариф:  <span className=' font-bold  text-h text-[12px]'>{user.tariff}</span></p>
           <p className="text-md mb-2 text-white ">Абонплата: <span className='font-bold text-[12px]'>{user.monthlyPayment} грн/міс</span> </p>
+          <NavLink to={"/payment"}> 
+<div  className={  style.animationBorderSM + ` mb-2 cursor-pointer relative inline-flex items-center justify-center p-4 px-2 py-1 ml-1 overflow-hidden font-medium   transition duration-300 ease-out border-2 group`}>
+<span className="absolute inset-0 flex items-center justify-center w-full h-full  duration-300 -translate-x-full  group-hover:translate-x-0 ease">
+<svg className="w-6 h-6  text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+</span>
+<span className="absolute flex items-center justify-center w-full h-full tracking-widest	 text-sm text-white transition-all duration-300 transform group-hover:translate-x-full ease">оплатити</span>
+<span className="relative invisible">Button Text</span>
+</div>
+</NavLink>
           <p className="text-md mb-2 text-white ">Наступне зняття через: </p>
           <div className="grid grid-flow-col  gap-x-5 text-center auto-cols-max">
   <div className={"flex flex-col p-1 bg-neutral rounded-box text-neutral-content text-white  text-md"+" "+style.animationBorderSM}>
@@ -271,7 +294,7 @@ function handleDisplayTariff(){
      <AddService open={openDialogService} handleClose={()=>setOpenDialogService(false)}/>
      <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} />
      <EditPhone open={openDialogEditPhone} handleClose={()=>{setOpenDialogEditPhone(false)}}/>
-     <TariffDialog open={openDialogTariff} handleClose={()=>{setOpenDialogTariff(false)}} tarriffList={user.tariffAvaibles}/>
+     <TariffDialog open={openDialogTariff} tariff={user.tariff} handleClose={()=>{setOpenDialogTariff(false)}} tarriffList={user.tariffAvaibles}/>
       </section>
 
   

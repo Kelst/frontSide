@@ -12,7 +12,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function TariffDialog({open,handleClose,handleAction,tarriffList}) {
+export default function TariffDialog({open,handleClose,handleAction,tarriffList,tariff}) {
   return (
     <React.Fragment  >
      
@@ -25,7 +25,7 @@ export default function TariffDialog({open,handleClose,handleAction,tarriffList}
         fullWidth={true}
         maxWidth={'lg'}
       >
-        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"18px"}}>Доступні тарифні плани</DialogTitle>
+        <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"18px",letterSpacing:1.5}}>Доступні тарифні плани</DialogTitle>
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -39,7 +39,7 @@ export default function TariffDialog({open,handleClose,handleAction,tarriffList}
           <CloseIcon />
         </IconButton>
         <DialogContent  >
-        <GlazmorphizmCard tarriffList={tarriffList}/>
+        <GlazmorphizmCard tarriffList={tarriffList} tariff={tariff}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}sx={{color:'black'}}>Ок</Button>

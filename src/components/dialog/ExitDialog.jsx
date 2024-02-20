@@ -27,18 +27,7 @@ export default function ExitDialog({open,handleClose,handleLogOuth}) {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle className=' text-center ' sx={{minWidth:"280px",fontSize:"32px"}}>{"Ви хочете вийти ?"}</DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
+        
         <DialogContent>
         <img className='w-40   object-cover mx-auto' src={Bay} alt="вийти" />
         </DialogContent>
