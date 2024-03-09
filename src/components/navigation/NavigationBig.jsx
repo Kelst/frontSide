@@ -6,7 +6,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../../assets/intelekt.png"
-import { useLocation } from 'react-router-dom';
+
 
 import minLogo from "../../assets/min-logo.png"
 import Menu from '@mui/material/Menu';
@@ -147,9 +147,13 @@ setActiveItem(item)
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Якщо декілька логінів</MenuItem>
-        <MenuItem onClick={handleClose}>Якщо декілька логінів</MenuItem>
-        <MenuItem onClick={handleClose}>Якщо декілька логінів</MenuItem>
+        {
+          user.subLogin.map(e=>{
+           return <MenuItem onClick={handleClose}>{e.login}</MenuItem>
+          })
+          
+        }
+       
       </Menu>
       </div>
           </div>

@@ -17,6 +17,8 @@ import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTo
 import EditPhone from '../../components/dialog/EditPhone';
 import TariffDialog from '../../components/dialog/TariffDialog';
 import { NavLink } from 'react-router-dom';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const user={
   name:"Безкоровайний Владислав Андрійович",
@@ -55,6 +57,15 @@ tariffAvaibles:[
 
  }
 export default function Home() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 const [openDialogCredit,setOpenDialogCredit]=useState(false)
 const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
@@ -109,8 +120,37 @@ function handleDisplayTariff(){
     <div className=" text-white  flex items-center justify-center rounded-lg">
       <div className="container mx-auto p-8 bg-white   opacity-95 text-black rounded-md shadow-md">
         <div className="mb-8 text-center">
+
           <h1 className="text-4xl font-bold mb-2 text-red-500">{user.name}</h1>
-          <p className="text-gray-600">Логін: {user.login}</p>
+          <p 
+          className="text-gray-600 ">Логін:
+          <span className=' ml-1 text-gray-800 font-bold text-inherit cursor-pointer' 
+     id="basic-button"
+     aria-controls={open ? 'basic-menu' : undefined}
+     aria-haspopup="true"
+     aria-expanded={open ? 'true' : undefined}
+     onClick={handleClick}
+    
+    >{user.login}</span>
+          <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        {
+          user.subLogin.map(e=>{
+           return <MenuItem onClick={handleClose}>{e.login}</MenuItem>
+          })
+          
+        }
+       
+      </Menu>
+          </p>
+        
         </div>
 
         <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>

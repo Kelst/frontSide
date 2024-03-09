@@ -9,13 +9,21 @@ import Slide from '@mui/material/Slide';
 import Bay from '../../assets/bay.png'
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
+import AddServiceMake from './AddServiceMake';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AddService({open,handleClose}) {
 
-
+   const [openMakeService,setOpenMakeService]=useState(false);
+   const handleShowDialog=()=>{
+    setOpenMakeService(true)
+   }
+   const handleCloseShowDialog=()=>{
+    setOpenMakeService(false)
+   }
   return (
     <React.Fragment>
      
@@ -62,10 +70,11 @@ export default function AddService({open,handleClose}) {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{color:'black'}}>Продовжити</Button>
+          <Button onClick={handleShowDialog} sx={{color:'black'}}>Продовжити</Button>
           <Button onClick={handleClose} sx={{color:'black'}}>Закрити</Button>
         </DialogActions>
       </Dialog>
+      <AddServiceMake open={openMakeService} handleCloseService={()=>handleClose()} handleClose={handleCloseShowDialog} />
     </React.Fragment>
   );
 }

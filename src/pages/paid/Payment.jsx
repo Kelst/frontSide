@@ -54,7 +54,7 @@ const StyledTabs = styled((props) => (
   zIndex:0,
   '& .MuiTabs-indicator': {
    
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     marginBottom:"10px",
     marginTop:"10px",
     
