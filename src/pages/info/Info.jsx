@@ -13,6 +13,9 @@ import Withdrawal from '../../components/payment/Withdrawal';
 import Pay from '../../components/payment/Pay';
 import PaymentDialog from '../../components/dialog/PaymentDialog';
 import MapOffice from '../../components/Map/MapOffice';
+import MyTaskViewer from '../../components/Task/MyTaskViewer';
+import FAQ from '../../components/faq/FAQ';
+import TV from '../../components/tv/TV';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -134,20 +137,20 @@ export default function Info() {
          className={style.animationBorderSM+' text-white'}
       >
           <TabPanel value={value} index={0} dir={theme.direction}>
-          Мої заявки
+          <MyTaskViewer/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction} >
         Підключи друга
         </TabPanel>
         <TabPanel  value={value} index={2} dir={theme.direction} >
-        Офіси
+        
         <MapOffice/>
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction} >
-        FAQ
+        <FAQ/>
         </TabPanel>
         <TabPanel value={value} index={4} dir={theme.direction} >
-        Телебачення
+        <TV/>
         </TabPanel>
       
       </SwipeableViews>

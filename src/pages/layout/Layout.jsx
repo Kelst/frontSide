@@ -141,13 +141,13 @@ useEffect(()=>{
     <div className='pt-0 '>
            <Loader/>
            <CustomAlert/>
-           { init && <Particles
+           {/* { init && <Particles
         id="tsparticleshexagon"
         className="ua-particles"
         url="hexagonPath.json"
         particlesLoaded={particlesLoaded}
         options={options}
-      />}
+      />} */}
     <div className='flex  gap-x-28 md:gap-x-0   '>
     <div className=' flex-shrink '>
     <Navigation  /> 
