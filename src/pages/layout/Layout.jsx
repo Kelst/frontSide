@@ -12,7 +12,8 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 import { useLocation } from 'react-router-dom';
 import useInfoStore from '../../store/infoStore'
-
+import SwipeUpAltIcon from '@mui/icons-material/SwipeUpAlt';
+import hand from "../../assets/hand.png"
 export default function Layout() {
   const [init, setInit] = useState(false);
   let location = useLocation();
@@ -137,6 +138,23 @@ useEffect(()=>{
   fetchData()
 
 },[])
+
+const [showButton,setShowButton]=useState(false)
+  const handleScrolltoTop=()=>{
+    window.scrollTo({top:0,behavior:"smooth"})
+  }
+  useEffect(() => {
+    const handleScrollbutton = () => {
+      console.log(window.pageYOffset);
+      window.pageYOffset > 100 ? setShowButton(true) : setShowButton(false);
+    };
+  
+    window.addEventListener('scroll', handleScrollbutton);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScrollbutton);
+    };
+  }, []);
   return (
     <div className='pt-0 '>
            <Loader/>
@@ -156,6 +174,12 @@ useEffect(()=>{
     </div>
    
     <div className={`h-[70vh] w-[275px] m-auto  px-2 mt-[200px] m-x-10 smm:w-[350px] ss:w-[400px]  sm:w-[550px] md:w-[900px] md1:w-[1019px] xl:w-[1100px] 2xl:w-[1450px]  `}>
+    {
+        showButton&&(<div  className='fixed bottom-5 right-4 z-[1000] p-4'>
+          <img width={50} src={hand} alt="" srcset=""className='text-white animate-bounce cursor-pointer  colo' onClick={handleScrolltoTop} />
+
+        </div>)
+      }
     <Outlet/>
     </div>
     </div>

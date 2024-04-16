@@ -58,7 +58,7 @@ export default function NavigationBig() {
 setActiveItem(item)
   }
   return (
-    <div  className=' ' >
+    <div  className=" " >
      <div className={clases.bgImgM}></div>
 
       <div className={` shadow-md  shadow-zinc-800 transition-all translate-y-[0px] p-2 md:-translate-y-80 max-w-[360px]  max-h-[120px] bg-white   fixed z-[5]   left-[calc(100%/2-52px)]  sm:left-[calc(100%/2-58px)]   top-2  rounded-md `}>

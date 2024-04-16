@@ -8,9 +8,6 @@ import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import { useTheme } from '@emotion/react';
 import Typography from '@mui/material/Typography';
-import Paid from '../../components/payment/Paid';
-import Withdrawal from '../../components/payment/Withdrawal';
-import Pay from '../../components/payment/Pay';
 import PaymentDialog from '../../components/dialog/PaymentDialog';
 import MapOffice from '../../components/Map/MapOffice';
 import MyTaskViewer from '../../components/Task/MyTaskViewer';
@@ -143,7 +140,22 @@ export default function Info() {
         Підключи друга
         </TabPanel>
         <TabPanel  value={value} index={2} dir={theme.direction} >
-        
+        <div className='mb-2 flex flex-wrap  justify-center items-center'>
+   <div className=' text-sm border-2  rounded-md p-3   mx-[20px] flex flex-col items-start justify-center mb-2'>
+    <div className=' font-bold'>ТЦ "Проспект", оф. № 128А (праворуч від ескалатору)</div>
+   <div className=' text-[14px]'>пн-пт 09:00 - 18:00 (перерва 14:00 - 15:00)</div> 
+   <div className=' text-[12px]'> сб 10:00 - 18:00 (перерва 13:00 - 14:00), нд - вихідний</div>
+    </div>
+    <div className=' text-sm border-2  rounded-md p-3   mx-[20px] flex flex-col items-start justify-center'>
+    <div className=' font-bold'>ТРЦ «DEPOt» (2-й поверх)
+
+</div>
+   <div className=' text-[14px]'>пн-нд 10:00 - 20:00 (перерва 14:00 - 14:30)
+</div>
+</div>
+
+
+    </div>
         <MapOffice/>
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction} >
