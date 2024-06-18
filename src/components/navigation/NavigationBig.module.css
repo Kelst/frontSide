@@ -32,7 +32,7 @@ z-index: 25;
 .navigation ul{
     display: flex;
     padding-left: 70px;
-    @apply  w-[400px]
+    @apply  w-[480px]
 }
 .navigation ul li{
 position: relative;
@@ -257,6 +257,9 @@ li .logout a .icon{
 }
 .navigation ul li:nth-child(4).active ~ .indicator{
     transform: translateX(calc(80px*3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator{
+    transform: translateX(calc(80px*4));
 }
 
 .bgImg{

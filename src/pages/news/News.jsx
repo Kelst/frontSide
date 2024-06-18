@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import style from  "./News.module.css"
 import ArticleDialog from '../../components/dialog/ArticleDialog'
+import MysteriousText from '../../components/MysteriousText/MysteriousText'
 export default function News() {
   
   const [openDialog,setOpenDialog]=useState(false)
@@ -12,7 +13,7 @@ export default function News() {
         
       <div className="container my-24 mx-auto md:px-6">
   <section className="mb-32 text-center md:text-left">
-    <h2 className="mb-12 text-center text-3xl font-bold">Останні новини</h2>
+    <h2 className="mb-12 text-center text-3xl font-bold"><MysteriousText>Останні новини</MysteriousText></h2>
 
     <div className="mb-12 grid items-center gap-x-6 md:grid-cols-2 xl:gap-x-12">
       <div className="mb-6 md:mb-0">
@@ -43,8 +44,8 @@ export default function News() {
             <a href="#!"> Intelekt</a></small>
         </p>
         <p className="text-neutral-500 dark:text-neutral-300">
-       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure velit, ab ipsa libero modi soluta nam odit autem deserunt quis quam labore quae? Aperiam
-        </p>
+     <MysteriousText>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure velit, ab ipsa libero modi soluta nam odit autem deserunt quis quam labore quae? Aperiam
+       </MysteriousText>  </p>
       </div>
     </div>
     
@@ -78,7 +79,8 @@ export default function News() {
             <a href="#!"> Intelekt</a></small>
         </p>
         <p className="text-neutral-500 dark:text-neutral-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo modi blanditiis minima perspiciatis sunt tempore nesciunt? Fugiat illo natus
+        <MysteriousText> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo modi blanditiis minima perspiciatis sunt tempore nesciunt? Fugiat illo natus
+        </MysteriousText>
         </p>
       </div>
     </div>
@@ -111,7 +113,9 @@ export default function News() {
             <a href="#!">Intelekt</a></small>
         </p>
         <p className="text-neutral-500 dark:text-neutral-300">
+       
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate fugit ducimus necessitatibus eveniet recusandae facilis voluptates voluptas! Accusantium amet
+       
         </p>
       </div>
    

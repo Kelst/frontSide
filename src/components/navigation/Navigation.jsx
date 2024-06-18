@@ -13,6 +13,7 @@ import Loader from "../loader/Loader";
 import ExitDialog from "../dialog/ExitDialog";
 import useInfoStore from "../../store/infoStore";
 import HamburgerBtn from "../hamburger/HamburgerBtn";
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 export default function Navigation() {
   
@@ -98,6 +99,7 @@ export default function Navigation() {
               <div className={clases.text}>Додатково</div>
             </NavLink>
           </li>
+          
           <li style={{'--bg': '#000'}} 
                     className={activeItem=='Item4'?clases.active:""}
                     onClick={()=>{
@@ -109,13 +111,23 @@ export default function Navigation() {
               <div className={clases.text}>Новини</div>
             </NavLink>
           </li>
-          
+          <li style={{'--bg': '#000'}} 
+                    className={activeItem=='Item5'?clases.active:""}
+                    onClick={()=>{
+                      handleActiveNavigationFromActive()
+                      handleActiveItemSelect('Item5')}}
+          >
+         <NavLink to={"/intelekt-shop"}>
+              <div className={clases.icon}><ShoppingBasketIcon/></div>
+              <div className={clases.text}>Магазин</div>
+            </NavLink>
+          </li>
 
         </div>
         <div className={clases.bottom}>
             <li style={{'--bg': '#000'}} 
-                      className={activeItem=='Item5'?clases.active:""}
-                      onClick={()=>handleActiveItemSelect('Item5')}
+                      className={activeItem=='Item6'?clases.active:""}
+                      onClick={()=>handleActiveItemSelect('Item6')}
             >
             <NavLink  onClick={()=>handleClickOpen()}>
               <div className={clases.icon}><LogoutIcon/></div>

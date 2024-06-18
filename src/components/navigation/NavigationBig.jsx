@@ -7,7 +7,7 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../../assets/intelekt.png"
 
-
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import minLogo from "../../assets/min-logo.png"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -54,7 +54,7 @@ export default function NavigationBig() {
   };
 
   const handleSetActive=(item)=>{
-
+    console.log(item);
 setActiveItem(item)
   }
   return (
@@ -64,7 +64,7 @@ setActiveItem(item)
       <div className={` shadow-md  shadow-zinc-800 transition-all translate-y-[0px] p-2 md:-translate-y-80 max-w-[360px]  max-h-[120px] bg-white   fixed z-[5]   left-[calc(100%/2-52px)]  sm:left-[calc(100%/2-58px)]   top-2  rounded-md `}>
         <img src={minLogo} width={'100px'} height={'100px'} className={`absolute  left-[26%] top-[-2px] z-50 `}  alt="" />
             <div className={` flex flex-col justify-center items-center  relative z-1   `}>
-            <div className='p-2  z-1 text-center font-bold  cursor-pointer  uppercase hover:shadow-red-900  mx-2 shadow-none mt-10 text-xs'>Особистий  кабінет</div>
+            <div className='p-2  z-1 text-center font-bold  cursor-pointer  uppercase hover:shadow-red-900  mx-2 shadow-none mt-10 text-xs'>Особистий  кабінет</div> 
               <span className={'text-[11px] text-red-700 shadow-sm'}>
                 {user.name}
               </span>
@@ -79,9 +79,10 @@ setActiveItem(item)
       <img src={logo} width={210} height={200} className='  object-cover absolute left-[-23px] mt-8 -z-10  '/>
    
 
-        <div className=' absolute font-bold  hidden 2xl:block  top-[90px] transition-all duration-500  left-0 uppercase text-white text-[10px]  2xl:top-[21px] 2xl:left-60 2xl:text-black '> 
-        <span className={clases.spanText}> Особистий кабінет   </span>  </div>
+      {/*    <div className=' absolute font-bold  hidden 2xl:block  top-[90px] transition-all duration-500  left-0 uppercase text-white text-[10px]  2xl:top-[21px] 2xl:left-60 2xl:text-black '> 
+       <span className={clases.spanText}> Особистий кабінет   </span>  </div> */}
       <ul>
+      
         <li className={clases.list +' '+ `${activeItem=='Item1'? clases.active:''}`}
         onClick={()=>handleSetActive('Item1')}
         >
@@ -116,9 +117,20 @@ setActiveItem(item)
             <span className={clases.text}>Новини </span>
           </NavLink>
         </li>
-        <li className={clases.list +' '+ clases.logout }
-        //  onClick={()=>handleSetActive('Item4')}
+        <li className={clases.list +' '+ `${activeItem=='Item5'? clases.active:''}`}
+         onClick={()=>handleSetActive('Item5')}
         >
+          
+         <NavLink to={"/intelekt-shop"}>
+            <span className={clases.icon}><ShoppingBasketIcon fontSize='medium'  /></span>
+            <span className={clases.text}>Магазин </span>
+          </NavLink>
+        </li>
+
+
+       
+
+        <li className={clases.list +' '+ clases.logout }>
             
           <a href="#">
             <span className={clases.icon}><LogoutIcon className=' hover:text-white' fontSize='medium' /></span>

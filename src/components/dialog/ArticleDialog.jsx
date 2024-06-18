@@ -50,7 +50,7 @@ export default function ArticleDialog({open,handleClose}) {
             <div
               class="relative mx-4 -mt-4 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20"
               data-te-ripple-init data-te-ripple-color="light">
-               <img  src="https://mdbcdn.b-cdn.net/img/new/standard/city/018.jpg" className="w-full " alt="Louvre"  />
+               <img  src="https://mdbcdn.b-cdn.net/img/new/standard/city/018.jpg" className="w-full   " alt="Louvre"  />
           <a href="#!">
             <div
               className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out  bg-[hsla(0,0%,98.4%,.15)]">

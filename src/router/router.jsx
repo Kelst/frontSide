@@ -40,6 +40,12 @@ export const router = createBrowserRouter([
         element:<News/>
         ,
       },
+      {
+        path: "/intelekt-shop",
+        element:<>HAllo</>
+        ,
+      },
+      
      
     ],
   },

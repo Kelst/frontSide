@@ -19,7 +19,13 @@ import TariffDialog from '../../components/dialog/TariffDialog';
 import { NavLink } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
+import { animated, useSpring } from "react-spring";
+import MysteriousText from '../../components/MysteriousText/MysteriousText';
+import TextAnimation from '../../components/TextAnimation/TextAnimation';
+import PulsingCircle from '../../components/PulsingCircle/PulsingCircle';
+import CheckmarkSquare from '../../components/CheckmarkSquare/CheckmarkSquare';
+import PauseIcon from '../../components/PauseIcon/PauseIcon';
+  
 const user={
   name:"Безкоровайний Владислав Андрійович",
   uid:"140278",
@@ -71,7 +77,7 @@ const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
 const [openDialogEditPhone,setOpenDialogEditPhone]=useState(false)
 const [openDialogTariff,setOpenDialogTariff]=useState(false)
-
+useSpring({ opacity: 1, from: { opacity: 0 }, delay: Math.random() * 450 });
 
 const setLoader=useInfoStore(state=>state.setLoader) 
 const showAllert=useInfoStore(state=>state.showAllert) 
@@ -114,14 +120,15 @@ function handleDisplayTariff(){
 //
 
   return (
-      <section >
+      <section  >
 
     <div className=' hidden lg:block relative z-10'>
     <div className=" text-white  flex items-center justify-center rounded-lg">
       <div className="container mx-auto p-8 bg-white   opacity-95 text-black rounded-md shadow-md">
         <div className="mb-8 text-center">
-
-          <h1 className="text-4xl font-bold mb-2 text-red-500">{user.name}</h1>
+          <h1 className="text-4xl font-bold mb-2 text-red-500 ">
+             <TextAnimation text={user.name}/>
+             </h1>
           <p 
           className="text-gray-600 ">Логін:
           <span className=' ml-1 text-gray-800 font-bold text-inherit cursor-pointer' 
@@ -155,16 +162,19 @@ function handleDisplayTariff(){
 
         <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"}>
           <div className={"bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
-            <h2 className="text-xl font-bold mb-4 text-red-500">Основна інформація</h2>
+            <h2 className="text-xl font-bold mb-4 text-red-500"><MysteriousText> Основна інформація</MysteriousText></h2>
            
            <div className='flex  items-center  justify-start  mb-2'> <p className="text-gray-300">Телефон: {user.phone}</p> 
             <IconButton aria-label="edited" className='mb-2' onClick={handleEditPhone} >
         <ModeEditOutlineTwoToneIcon className=' text-gray-300 '  fontSize='small'/>
       </IconButton>
       </div>
+      
             <p className="text-gray-300 mb-2">Адреса: {user.adress}</p>
-            <p className="text-gray-300">Стан інтернет зєднання: {user.statusInternet ? 'Active' : 'Inactive'}</p>
-            <p className="text-gray-300">Стан  логіну: {user.statusInternet ? 'Active' : 'Inactive'}</p>
+            <p className="text-gray-300">Стан інтернет зєднання: {user.statusInternet ? < div className=' inline-flex justify-center items-center gap-2 ' ><PulsingCircle type={'active'}/> Active</div> : 
+            < div className=' inline-flex justify-center items-center gap-2 ' ><PulsingCircle type={'inactive'}/> Inactive</div> 
+            }</p>
+            <p className="text-gray-300">Стан  логіну: {user.status ?  <div className=' inline-flex  gap-x-2 '><CheckmarkSquare/> Активований</div>  : <div className=' inline-flex  gap-x-2 '><PauseIcon/> На паузі</div>}</p>
 
             <GlasmorphizmButton label='Призупинити логін' handleAction={handleStopPlayLogin}/>
          
@@ -172,7 +182,7 @@ function handleDisplayTariff(){
           </div>
 
           <div className={"bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
-            <h2 className="text-xl font-bold mb-4 text-red-500">Інформація про оплату</h2>
+            <h2 className="text-xl font-bold mb-4 text-red-500"> <MysteriousText>Інформація про оплату</MysteriousText></h2>
             <p className="text-gray-300 mb-2 ">Стан рахунку: {user.balance} грн.</p>
            <div className=' flex gap-x-3'><p className="text-gray-300 mb-2">Кредит: {user.deposit} грн.</p><p className="text-gray-300 mb-2">Кредит до: {user.dateOfEndCredits}</p></div> 
           <div className="text-gray-300 mb-2">  
@@ -213,7 +223,7 @@ function handleDisplayTariff(){
           </div>
 
           <div className={"bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
-            <h2 className="text-xl font-bold mb-4 text-red-500">Інтернет</h2>
+            <h2 className="text-xl font-bold mb-4 text-red-500"> <MysteriousText>Інтернет</MysteriousText></h2>
             <p className="text-gray-300 mb-2">Тарифний план: {user.tariff}</p>
             <p className="text-gray-300 mb-2">Швидкість: {extractInfoFromString(user.tariff).spead}Mбіт</p>
             <p className="text-gray-300 mb-2">Ціна: {extractInfoFromString(user.tariff).price} грн.</p>
@@ -224,7 +234,7 @@ function handleDisplayTariff(){
           </div>
         </div>
         <div className={"mt-8 bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
-          <h2 className="text-xl font-bold mb-4 text-red-500">Керування логіном</h2>
+          <h2 className="text-xl font-bold mb-4 text-red-500"><MysteriousText>Керування логіном</MysteriousText></h2>
            <div className=' flex  justify-center' >
            <GlasmorphizmButton handleAction={handleClearMac} label='Очистити MAC'/>
            <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'  />
@@ -244,7 +254,7 @@ function handleDisplayTariff(){
     <div className="flex flex-col lg:bg-slate-100 gap-y-6 items-center justify-center sm:flex-row sm:gap-y-4 flex-wrap sm:items-center sm:shadow-white-sm sm:shadow-red-sm sm:shadow-red-md sm:shadow-red-sm sm:inset-shadow-red-lg sm:border-white sm:p-8 sm:shadow-inner xl:gap-6">   
       <div className=" w-[220px] sm:w-[420px]   mx-auto  shadow-zinc-900 shadow-lg  z-0 mt-2">
         <div className={ style.animationBorder}>
-          <div className="text-lg font-semibold mb-2  text-gray-200 relative  p-[5px] rounded-md sm:uppercase">Інформація про логін <PermIdentityIcon className='absolute top-[-25px] z-[100] border-t-2 rounded-2xl left-[0px]'/></div>
+          <div className="text-lg font-semibold mb-2  text-gray-200 relative  p-[5px] rounded-md sm:uppercase"><MysteriousText>Інформація про логін</MysteriousText>  <PermIdentityIcon className='absolute top-[-25px] z-[100] border-t-2 rounded-2xl left-[0px]'/></div>
           <p className="text-md mb-2 text-gray-200">Логін:  <span className=' font-bold  text-h text-[12px]'>{user.login}</span></p>
           <p className="text-md mb-2 text-white ">Адреса: <span className='font-bold text-[12px]'>{user.adress}</span> </p>
           <p className="text-md mb-2 text-white  flex justify-start items-center gap-x-2">Стан з'єднання: <span className='font-bold text-[12px]'>{user.statusInternet?<div className='relative'><OnlinePredictionIcon fontSize='large' className='text-grean-500 text-white  '></OnlinePredictionIcon><span className=' absolute text-[10px] top-[1px] '>Online</span></div>:<div className=' relative'><OnlinePredictionIcon fontSize='large' className=' text-orange-500 animate-pulse'/> <span className=' absolute text-[10px] top-[1px] '>Offline</span></div>} </span> </p>

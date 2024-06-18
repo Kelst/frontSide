@@ -9,6 +9,7 @@ export default class AuthService {
 }
     
     static async logouth(){
-        return $api.post(`/logout`)
+     console.log("UID",localStorage.getItem('uid'));
+        return $api.post(`/logout`,{uid:localStorage.getItem('uid')})
    }
 }

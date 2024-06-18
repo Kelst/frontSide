@@ -31,10 +31,27 @@ async checkUser(){
   }
 
 },
+async LoadData(login,password){
+  try {
+    const response=await AuthService.login(login,password)
+    localStorage.setItem('token',response.data.accessToken);
+    localStorage.setItem('uid',response.data.user.uid);
+    console.log("UID",response.data);
+    set(state=>({...state,isAuth:true,errorMessage:'',user:{...state.user,...response.data.user}}))
+    return {flag:true,errText:''}
+  } catch (error) {
+    console.log(error.response?.data?.message,"MESSAge ERROR");
+    set(state=>({...state,errorMessage:error.response?.data?.message}))
+    return {flag:false,errText:error?.response?.data?.message}
+  }
+
+},
 async logIn(login,password){
   try {
     const response=await AuthService.login(login,password)
     localStorage.setItem('token',response.data.accessToken);
+    localStorage.setItem('uid',response.data.user.uid);
+    console.log("UID",response.data);
     set(state=>({...state,isAuth:true,errorMessage:'',user:{...state.user,...response.data.user}}))
     return {flag:true,errText:''}
   } catch (error) {
@@ -63,10 +80,14 @@ async logInPhone(phone){
 },
 async logOut(){
   try {
+    console.log(localStorage.getItem('uid'),"FDFDD");
     const response=await AuthService.logouth()
+    console.log(response,"LOGOUT");
     localStorage.removeItem('token');
+    localStorage.removeItem('uid');
     set(state=>({...state,token:'',isAuth:false,user:{uid:"",id:""}}))
   } catch (error) {
+    console.log("HUI");
     console.log(error.response?.data?.message);
   }
 
