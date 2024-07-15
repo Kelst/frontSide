@@ -24,7 +24,7 @@ const CheckmarkSquare = () => {
         display: 'inline',
         margin: 'auto',
         borderRadius: '5px',
-        margin:"0px"
+        
       }}>
       <animated.path
         d="M20 50 L40 70 L80 30"

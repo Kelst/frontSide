@@ -25,7 +25,10 @@ import TextAnimation from '../../components/TextAnimation/TextAnimation';
 import PulsingCircle from '../../components/PulsingCircle/PulsingCircle';
 import CheckmarkSquare from '../../components/CheckmarkSquare/CheckmarkSquare';
 import PauseIcon from '../../components/PauseIcon/PauseIcon';
-  
+import HelpOutlineTwoToneIcon from '@mui/icons-material/HelpOutlineTwoTone';
+import ControllPanelDialog from '../../components/dialog/ControllPanelDialog';
+
+
 const user={
   name:"Безкоровайний Владислав Андрійович",
   uid:"140278",
@@ -71,7 +74,8 @@ export default function Home() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  
+const [openControllPanelDialog,setControllPanelDialog]=useState(false)
 const [openDialogCredit,setOpenDialogCredit]=useState(false)
 const [openDialogService,setOpenDialogService]=useState(false)
 const [openDialogStopPlay,setOpenDialogStopPlay]=useState(false)
@@ -234,8 +238,10 @@ function handleDisplayTariff(){
           </div>
         </div>
         <div className={"mt-8 bg-black p-6 rounded-md shadow-md" +" "+ style.animationBorder}>
-          <h2 className="text-xl font-bold mb-4 text-red-500"><MysteriousText>Керування логіном</MysteriousText></h2>
+          <h2 className="text-xl font-bold mb-4 text-red-500"><MysteriousText>Керування логіном</MysteriousText> <HelpOutlineTwoToneIcon onClick={()=>setControllPanelDialog(true)} className='hover:scale-110 cursor-help'/></h2>
            <div className=' flex  justify-center' >
+     
+      
            <GlasmorphizmButton handleAction={handleClearMac} label='Очистити MAC'/>
            <GlasmorphizmButton handleAction={handleSetCredit} label='Встановити кредит'  />
            <GlasmorphizmButton label='Додаткові послуги' handleAction={handleAddService} />
@@ -340,7 +346,9 @@ function handleDisplayTariff(){
     </div>
     </div>
 
+     <ControllPanelDialog open={openControllPanelDialog} handleAction={showAllert} handleClose={()=>{setControllPanelDialog(false)}}   />
      <MacCreditDialog open={openDialogCredit} handleAction={showAllert} handleClose={()=>{setOpenDialogCredit(false)}}   />
+     
      <AddService open={openDialogService} handleClose={()=>setOpenDialogService(false)}/>
      <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} />
      <EditPhone open={openDialogEditPhone} handleClose={()=>{setOpenDialogEditPhone(false)}}/>

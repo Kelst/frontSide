@@ -11,11 +11,14 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import AddServiceMake from './AddServiceMake';
+import useInfoStore from '../../store/infoStore'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AddService({open,handleClose}) {
+  const setShowCursor=useInfoStore(state=>state.setShowCursor)
 
    const [openMakeService,setOpenMakeService]=useState(false);
    const handleShowDialog=()=>{
@@ -24,6 +27,9 @@ export default function AddService({open,handleClose}) {
    const handleCloseShowDialog=()=>{
     setOpenMakeService(false)
    }
+   React.useEffect(()=>{
+    setShowCursor(false)
+   },[])
   return (
     <React.Fragment>
      
@@ -71,7 +77,7 @@ export default function AddService({open,handleClose}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleShowDialog} sx={{color:'black'}}>Продовжити</Button>
-          <Button onClick={handleClose} sx={{color:'black'}}>Закрити</Button>
+          <Button onClick={()=>{handleClose();setShowCursor(true)}} sx={{color:'black'}}>Закрити</Button>
         </DialogActions>
       </Dialog>
       <AddServiceMake open={openMakeService} handleCloseService={()=>handleClose()} handleClose={handleCloseShowDialog} />

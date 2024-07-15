@@ -14,10 +14,13 @@ import { useLocation } from 'react-router-dom';
 import useInfoStore from '../../store/infoStore'
 import SwipeUpAltIcon from '@mui/icons-material/SwipeUpAlt';
 import hand from "../../assets/hand.png"
+import AnimatedCursor from "react-animated-cursor"
+
 export default function Layout() {
   const [init, setInit] = useState(false);
   let location = useLocation();
   const setActiveItem=useInfoStore(state=>state.setActiveItem)
+  const showCursor=useInfoStore(state=>state.showCursor)
 
   React.useEffect(() => {
     switch (location.pathname){
@@ -36,7 +39,7 @@ export default function Layout() {
 
     }
   
-  }, [location]);
+  }, [location,showCursor]);
 
 
   const checkUser= useStore(store=>store.checkUser)
@@ -157,6 +160,17 @@ const [showButton,setShowButton]=useState(false)
   }, []);
   return (
     <div className='pt-0 '>
+<AnimatedCursor
+      innerSize={20}
+      outerSize={40}
+      color='0, 0, 0'
+      outerAlpha={0.2}
+      innerScale={0.7}
+      outerScale={0.9}
+      innerStyle={{zIndex:"9999"}}
+      outerStyle={{zIndex:"9999"}}
+    
+    />
            <Loader/>
            <CustomAlert/>
            {/* { init && <Particles
@@ -176,7 +190,7 @@ const [showButton,setShowButton]=useState(false)
     <div className={`h-[70vh] w-[275px] m-auto  px-2 mt-[200px] m-x-10 smm:w-[350px] ss:w-[400px]  sm:w-[550px] md:w-[900px] md1:w-[1019px] xl:w-[1100px] 2xl:w-[1450px]  `}>
     {
         showButton&&(<div  className='fixed bottom-5 right-4 z-[1000] p-4'>
-          <img width={50} src={hand} alt="" srcset=""className='text-white animate-bounce cursor-pointer  colo' onClick={handleScrolltoTop} />
+          <img width={50} src={hand} alt="" srcSet=""className='text-white animate-bounce cursor-pointer  colo' onClick={handleScrolltoTop} />
 
         </div>)
       }

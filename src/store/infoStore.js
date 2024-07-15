@@ -7,6 +7,10 @@ openAlert:false,
 typeAlert:2,
 messageAlert:"",
 activeItem:"Item1",
+showCursor:true,
+setShowCursor(){
+  set(state=>({...state,showCursor:!state.showCursor}))
+},
 setActiveItem(item){
 set(state=>({...state,activeItem:item}))
 },
